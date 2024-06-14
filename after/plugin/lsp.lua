@@ -2,7 +2,8 @@ local lsp = require('lsp-zero')
 
 lsp.preset("recommended")
 lsp.ensure_installed(
-	{'tsserver', 'eslint', 'lua_ls', 'pylsp', 'rust_analyzer', 'svelte', 'omnisharp', 'gdscript'}
+	{'tsserver', 'lua_ls', 'rust_analyzer', 'svelte', 'omnisharp'}
+	-- {'tsserver', 'eslint', 'lua_ls', 'rust_analyzer', 'svelte', 'omnisharp', 'gdscript'}
 )
 
 lsp.on_attach(function(client, bufnr)
@@ -26,12 +27,58 @@ end)
 -- When you don't have mason.nvim installed
 -- You'll need to list the servers installed in your system
 -- lsp.setup_servers()
+require('mason').setup({})
+require('mason-lspconfig').setup({
+	ensure_installed = {},
+	handlers = {
+		function (server_name)
+			require('lspconfig')[server_name].setup({})
+		end,
+	},
+})
 
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
+-- -- gdscript
+-- require'lspconfig'.gdscript.setup{capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())}
+
+-- file: lsp.lua
+-- lsp is require('lsp-zero')
+-- put this before calling lsp.setup()
+lsp.configure('gdscript', {
+    force_setup = true, -- because the LSP is global. Read more on lsp-zero docs about this.
+    single_file_support = false,
+    cmd = {'ncat', '127.0.0.1', '6005'}, -- the important trick for Windows!
+    root_dir = require('lspconfig.util').root_pattern('project.godot', '.git'),
+    filetypes = {'gd', 'gdscript', 'gdscript3' }
+})
+
 -- cmp
 local cmp = require('cmp')
+cmp.setup({
+  snippet = {
+	expand = function(args)
+	  require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  window = {
+	completion = cmp.config.window.bordered(),
+  },
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+	{ name = 'luasnip' },
+  }
+})
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 -- local cmp_mappings = lsp.defaults.cmp_mappings({
 -- 	['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -41,3 +88,4 @@ local cmp_select = {behavior = cmp.SelectBehavior.Select}
 -- })
 
 lsp.setup()
+

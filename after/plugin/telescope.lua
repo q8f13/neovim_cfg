@@ -26,8 +26,8 @@ function vim.getVisualSelection()
 	end
 end
 
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<Leader>ff', tb.current_buffer_fuzzy_find, opts)
+-- local opts = { noremap = true, silent = true }
+-- vim.keymap.set('n', '<Leader>ff', tb.current_buffer_fuzzy_find, opts)
 
 -- default_text for telescope is broken now. fix it when ready
 -- vim.keymap.set('v', '<space>g', function()
