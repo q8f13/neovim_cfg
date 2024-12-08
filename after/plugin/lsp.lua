@@ -2,7 +2,7 @@ local lsp = require('lsp-zero')
 
 lsp.preset("recommended")
 lsp.ensure_installed(
-	{'tsserver', 'eslint', 'lua_ls', 'pylsp', 'rust_analyzer', 'svelte', 'omnisharp', 'gdscript'}
+	{'tsserver', 'eslint', 'lua_ls', 'pylsp', 'rust_analyzer', 'svelte', 'omnisharp'}
 )
 
 lsp.on_attach(function(client, bufnr)

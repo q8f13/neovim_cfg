@@ -33,7 +33,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.colorcolumn = ""
 
 -- font
-vim.opt.termencoding = "utf8"
+-- vim.opt.termencoding = "utf8"
 vim.opt.fileencodings = 'ucs-bom,utf-8,default,gb2312,gbk,gb18030'
 vim.opt.ambiwidth = 'double'
 
