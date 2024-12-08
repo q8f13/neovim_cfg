@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
 
 	use "scrooloose/nerdcommenter"
 
+	use "whiteinge/diffconflicts"
+
 	-- use {"williamboman/mason.nvim"}
 	use {"tpope/vim-fugitive"}
 
