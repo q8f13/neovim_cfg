@@ -18,6 +18,10 @@ end)
 -- shortcut for buffers
 vim.keymap.set('n', "<C-l>", vim.cmd.bnext)
 vim.keymap.set('n', "<C-h>", vim.cmd.bprev)
+--
+
+-- ins-completion
+vim.keymap.set('i', "<C-n>", vim.cmd.completion)
 
 -- Ctrl+c to copy selected block
 vim.keymap.set('v', "<C-c>", '"+y')
@@ -54,3 +58,5 @@ cmp.setup({
 
 
 
+-- switch when termianl split
+-- tmap <S-h> <C-\><C-N>h
