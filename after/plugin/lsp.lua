@@ -41,17 +41,15 @@ require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
 -- -- gdscript
 -- require'lspconfig'.gdscript.setup{capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())}
-
--- file: lsp.lua
--- lsp is require('lsp-zero')
--- put this before calling lsp.setup()
-lsp.configure('gdscript', {
-    force_setup = true, -- because the LSP is global. Read more on lsp-zero docs about this.
-    single_file_support = false,
-    cmd = {'ncat', '127.0.0.1', '6005'}, -- the important trick for Windows!
-    root_dir = require('lspconfig.util').root_pattern('project.godot', '.git'),
-    filetypes = {'gd', 'gdscript', 'gdscript3' }
-})
+--
+local port = '6005'
+local cmd = { 'ncat', 'localhost', port }
+local util = require 'lspconfig.util'
+require('lspconfig').gdscript.setup {
+	cmd = cmd,
+	filetypes = { 'gd', 'gdscript', 'gdscript3' },
+	root_dir = util.root_pattern('project.godot', '.git'),
+}
 
 -- cmp
 local cmp = require('cmp')

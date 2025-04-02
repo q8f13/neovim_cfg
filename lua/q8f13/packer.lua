@@ -3,6 +3,8 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
+
+
 return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
@@ -24,6 +26,15 @@ return require('packer').startup(function(use)
 
 	-- use {"williamboman/mason.nvim"}
 	use {"tpope/vim-fugitive"}
+
+	-- ime auto switch
+	use {"keaising/im-select.nvim",
+		config = function()
+			require("im_select").setup({})
+		end,
+	}
+
+	use 'junegunn/fzf.vim'
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
