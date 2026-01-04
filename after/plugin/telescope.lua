@@ -1,9 +1,9 @@
 local tb = require('telescope.builtin')
 
 -- vim.keymap.set('n', '<leader>pf', tb.find_files, {})
-vim.keymap.set('n', '<leader>ff', tb.find_files, {})
-vim.keymap.set('n', '<C-p>', tb.git_files, {})
--- vim.keymap.set('n', '<leader>fg', tb.live_grep, {})
+vim.keymap.set('n', '<C-p>', tb.find_files, {})
+-- vim.keymap.set('n', '<C-p>', tb.git_files, {})
+vim.keymap.set('n', '<leader>fg', tb.live_grep, {})
 vim.keymap.set('n', '<leader>bs', tb.buffers, {})
 vim.keymap.set('n', '<M-o>', tb.oldfiles, {})
 -- vim.keymap.set('n', '<leader>ll', tb.live_grep, {})
@@ -27,7 +27,7 @@ function vim.getVisualSelection()
 end
 
 -- local opts = { noremap = true, silent = true }
--- vim.keymap.set('n', '<Leader>ff', tb.current_buffer_fuzzy_find, opts)
+vim.keymap.set('n', '<Leader>ff', tb.current_buffer_fuzzy_find, opts)
 
 -- default_text for telescope is broken now. fix it when ready
 -- vim.keymap.set('v', '<space>g', function()
