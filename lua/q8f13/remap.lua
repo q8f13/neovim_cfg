@@ -48,11 +48,11 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- local cmp = require'cmp'
 -- cmp.setup({
-              -- -- Classic completion keymaps
+	      -- -- Classic completion keymaps
     -- mapping = cmp.mapping.preset.insert({
-          -- ['<CR>'] = cmp.mapping.confirm { select = true },
-          -- ['<Tab>'] = cmp.mapping.select_next_item(),
-          -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+	  -- ['<CR>'] = cmp.mapping.confirm { select = true },
+	  -- ['<Tab>'] = cmp.mapping.select_next_item(),
+	  -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     -- })
 -- })
 
@@ -60,3 +60,22 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- switch when termianl split
 -- tmap <S-h> <C-\><C-N>h
+
+-- open url
+-- https://stackoverflow.com/questions/9458294/open-url-under-cursor-in-vim-with-browser
+local function handle_url()
+  local line = vim.api.nvim_get_current_line()
+  -- Lua pattern equivalent to your Vim regex
+  local uri = string.match(line, "%a+://[^%s>,;]*")
+
+  if uri and uri ~= "" then
+    print(uri)
+    -- Using nvim_command to run the silent system call
+	vim.cmd(string.format("!librewolf %s", uri))
+	-- vim.cmd(string.format("silent !librewolf '%s'", uri))
+  else
+    print("No URI found in line.")
+  end
+end
+vim.keymap.set("n", "<leader>U", handle_url, {desc="Open URL under cursor"})
+vim.keymap.set("v", "<leader>U", handle_url, {desc="Open URL under cursor"})
