@@ -3,8 +3,6 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-
-
 return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
@@ -27,30 +25,27 @@ return require('packer').startup(function(use)
 	-- use {"williamboman/mason.nvim"}
 	use {"tpope/vim-fugitive"}
 
-	-- ime auto switch
-	-- use {"keaising/im-select.nvim",
-		-- config = function()
-			-- require("im_select").setup({})
-		-- end,
-	-- }
+	-- LSP Support
+	use {'neovim/nvim-lspconfig'}             -- Required
+	use {'williamboman/mason.nvim'}           -- Optional
+	use {'williamboman/mason-lspconfig.nvim'} -- Optional
+
+	-- Autocompletion
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
+	use {'hrsh7th/cmp-nvim-lsp'} -- Required
+	use 'hrsh7th/nvim-cmp'
+	use {'L3MON4D3/LuaSnip'}     -- Required
+	use 'saadparwaiz1/cmp_luasnip'
 
 	use 'junegunn/fzf.vim'
-
-	-- use {
-		-- 'VonHeikemen/lsp-zero.nvim',
-		-- branch = 'v2.x',
-		-- requires = {
-			-- -- LSP Support
-			-- {'neovim/nvim-lspconfig'},             -- Required
-			-- {'williamboman/mason.nvim'},           -- Optional
-			-- {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-			-- -- Autocompletion
-			-- {'hrsh7th/nvim-cmp'},     -- Required
-			-- {'hrsh7th/cmp-nvim-lsp'}, -- Required
-			-- {'L3MON4D3/LuaSnip'},     -- Required
-		-- }
-	-- }
+	
+	-- ime auto switch
+	-- use {"keaising/im-select.nvim"
+	-- config = function()
+		-- require("im_select").setup({})
+	-- end
 
 	use({
 		"kylechui/nvim-surround",

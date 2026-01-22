@@ -19,9 +19,9 @@ end)
 vim.keymap.set('n', "<C-l>", vim.cmd.bnext)
 vim.keymap.set('n', "<C-h>", vim.cmd.bprev)
 --
-
+--
 -- ins-completion
-vim.keymap.set('i', "<C-n>", vim.cmd.completion)
+-- vim.keymap.set('i', "<C-n>", vim.cmd.select_next_item())
 
 -- Ctrl+c to copy selected block
 vim.keymap.set('v', "<C-c>", '"+y')
@@ -48,18 +48,19 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- local cmp = require'cmp'
 -- cmp.setup({
-	      -- -- Classic completion keymaps
-    -- mapping = cmp.mapping.preset.insert({
+		  -- -- Classic completion keymaps
+	-- mapping = cmp.mapping.preset.insert({
 	  -- ['<CR>'] = cmp.mapping.confirm { select = true },
-	  -- ['<Tab>'] = cmp.mapping.select_next_item(),
-	  -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    -- })
+	  -- ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(),{'i','s'}),
+	  -- ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(),{'i','s'}),
+	-- })
 -- })
-
-
 
 -- switch when termianl split
 -- tmap <S-h> <C-\><C-N>h
+
+-- cd to current file
+vim.keymap.set("n", "<leader>gc", ":cd %:h <CR>")
 
 -- open url
 -- https://stackoverflow.com/questions/9458294/open-url-under-cursor-in-vim-with-browser
