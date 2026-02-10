@@ -15,6 +15,9 @@ vim.keymap.set('n', '<leader>fc', function()
     vim.lsp.buf.format()
 end)
 
+-- read from external cli
+vim.keymap.set('n', '<leader>ci', 'v:!')
+
 -- shortcut for buffers
 vim.keymap.set('n', "<C-l>", vim.cmd.bnext)
 vim.keymap.set('n', "<C-h>", vim.cmd.bprev)
@@ -46,18 +49,11 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
--- local cmp = require'cmp'
--- cmp.setup({
-		  -- -- Classic completion keymaps
-	-- mapping = cmp.mapping.preset.insert({
-	  -- ['<CR>'] = cmp.mapping.confirm { select = true },
-	  -- ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(),{'i','s'}),
-	  -- ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(),{'i','s'}),
-	-- })
--- })
-
 -- switch when termianl split
--- tmap <S-h> <C-\><C-N>h
+vim.keymap.set("t", "<S-h>", "<C-\\><C-N>h")
+vim.keymap.set("t", "<S-j>", "<C-\\><C-N>j")
+vim.keymap.set("t", "<S-k>", "<C-\\><C-N>k")
+vim.keymap.set("t", "<S-l>", "<C-\\><C-N>l")
 
 -- cd to current file
 vim.keymap.set("n", "<leader>gc", ":cd %:h <CR>")

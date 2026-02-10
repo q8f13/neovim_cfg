@@ -40,3 +40,4 @@ vim.opt.fileencodings = 'ucs-bom,utf-8,default,gb2312,gbk,gb18030'
 vim.opt.ambiwidth = 'double'
 
 vim.g.mapleader = ";"
+

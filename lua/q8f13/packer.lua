@@ -8,9 +8,9 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.2',
-		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
+	 'nvim-telescope/telescope.nvim', tag = '0.1.2',
+	 -- or                            , branch = '0.1.x',
+	 requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
 	use "VDuchauffour/neodark.nvim"
@@ -22,38 +22,42 @@ return require('packer').startup(function(use)
 
 	use "whiteinge/diffconflicts"
 
-	-- use {"williamboman/mason.nvim"}
 	use {"tpope/vim-fugitive"}
 
 	-- LSP Support
 	use {'neovim/nvim-lspconfig'}             -- Required
 	use {'williamboman/mason.nvim'}           -- Optional
 	use {'williamboman/mason-lspconfig.nvim'} -- Optional
+	require("mason").setup()
 
 	-- Autocompletion
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
-	use {'hrsh7th/cmp-nvim-lsp'} -- Required
-	use 'hrsh7th/nvim-cmp'
-	use {'L3MON4D3/LuaSnip'}     -- Required
-	use 'saadparwaiz1/cmp_luasnip'
+	-- use 'hrsh7th/cmp-buffer'
+	-- use 'hrsh7th/cmp-path'
+	-- use 'hrsh7th/cmp-cmdline'
+	-- use {'hrsh7th/cmp-nvim-lsp'} -- Required
+	-- use 'hrsh7th/nvim-cmp'
+	-- use {'L3MON4D3/LuaSnip'}     -- Required
+	-- use 'saadparwaiz1/cmp_luasnip'
+
+	-- try blink.cmp
+	use 'saghen/blink.cmp'
+	use 'rafamadriz/friendly-snippets'
 
 	use 'junegunn/fzf.vim'
-	
+
 	-- ime auto switch
 	-- use {"keaising/im-select.nvim"
 	-- config = function()
-		-- require("im_select").setup({})
+	 -- -- require("im_select").setup({})
 	-- end
 
 	use({
 		"kylechui/nvim-surround",
 		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end
-	})
-end)
+			-- require("nvim-surround").setup({
+				-- -- Configuration here, or leave empty to use defaults
+				-- })
+			end
+		})
+	end)
