@@ -1,4 +1,7 @@
 -- setup nvim-cmp
+if vim.g.vscode then
+	return
+end
 require('blink.cmp').setup({
   keymap = {
 	  preset = 'default',

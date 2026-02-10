@@ -12,11 +12,11 @@ return require('packer').startup(function(use)
 	use "whiteinge/diffconflicts"
 
 	-- ime auto switch
-	use {"keaising/im-select.nvim",
-		config = function()
-			require("im_select").setup({})
-		end,
-	}
+	-- use {"keaising/im-select.nvim",
+		-- config = function()
+			-- require("im_select").setup({})
+		-- end,
+	-- }
 
 	use 'junegunn/fzf.vim'
 
